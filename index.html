@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer Troubleshooting Expert System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>
+    </span>
+    <span>Computer Troubleshooting Expert System</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- 1. Home -->
+  <section id="home" class="view hero">
+    <p class="eyebrow">Free &middot; No account needed</p>
+    <h1>Computer Troubleshooting Expert System</h1>
+    <p class="lead">Tell us which device is giving you trouble and what is going wrong. Answer a few quick questions and we will point you to the most likely cause and a recommended fix.</p>
+    <button class="btn-primary btn-large" id="start-btn" type="button">
+      Start Troubleshooting
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </section>
+
+  <!-- 2. Devices -->
+  <section id="devices" class="view" hidden>
+    <ol class="steps" aria-label="Progress"><li class="on">Device</li><li>Problem</li><li>Questions</li></ol>
+    <h2>What device are you having a problem with?</h2>
+    <p class="sub">Select one to see the problems we can help with.</p>
+    <div id="device-grid" class="grid"></div>
+    <div class="nav"><button class="btn-ghost" type="button" data-go="home">&larr; Back</button></div>
+  </section>
+
+  <!-- 3. Problems -->
+  <section id="problems" class="view" hidden>
+    <ol class="steps" aria-label="Progress"><li class="done">Device</li><li class="on">Problem</li><li>Questions</li></ol>
+    <h2 id="problems-title">Choose your problem</h2>
+    <p class="sub" id="problems-sub">Pick the problem that best matches what you are experiencing.</p>
+    <div id="problem-list" class="problem-list"></div>
+    <div class="nav"><button class="btn-ghost" id="problems-back" type="button">&larr; Change device</button></div>
+  </section>
+
+  <!-- 4. Troubleshooting -->
+  <section id="troubleshoot" class="view" hidden>
+    <ol class="steps" aria-label="Progress"><li class="done">Device</li><li class="done">Problem</li><li class="on">Questions</li></ol>
+    <div class="two-col">
+      <div class="panel">
+        <h2 class="panel-title">Device &amp; Questions</h2>
+        <dl class="facts">
+          <div><dt>Device category</dt><dd id="t-device"></dd></div>
+          <div><dt>Exact problem</dt><dd id="t-problem"></dd></div>
+        </dl>
+        <form id="questions" class="questions" aria-label="Troubleshooting questions"></form>
+        <p id="progress" class="progress"></p>
+      </div>
+
+      <div class="panel result">
+        <h2 class="panel-title">Diagnosis &amp; Solution</h2>
+        <div id="result-empty" class="placeholder">Answer all the questions on the left to see the possible cause and recommended solution.</div>
+        <div id="result-body" hidden>
+          <div class="block">
+            <h3>Possible cause</h3>
+            <p id="r-cause"></p>
+          </div>
+          <div class="block solution">
+            <h3>Recommended solution</h3>
+            <p id="r-solution"></p>
+          </div>
+        </div>
+        <div class="block">
+          <h3>Summary of your answers</h3>
+          <ul id="r-summary" class="summary"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="nav center">
+      <button class="btn-primary" id="start-over" type="button">Start Over</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">Computer Troubleshooting Expert System</footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
